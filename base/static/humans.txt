@@ -3,13 +3,14 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Philipp Meier -- Developer -- @pmeier82
 
 # THANKS
 
-    <name>
+    The G-Node spike team!
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
     jQuery, Modernizr
+    Django, Python

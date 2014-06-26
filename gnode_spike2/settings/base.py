@@ -27,7 +27,7 @@ SUPPORTED_NONLOCALES = ['media', 'admin', 'static']
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 # Defines the views served for root URLs.
 ROOT_URLCONF = 'gnode_spike2.urls'
@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django.contrib.syndication',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Third-party apps, patches, fixes
     'djcelery',
@@ -99,9 +100,9 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/static" or "C:/www/django/static".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 )
 
 # If you set this to False, Django will make some optimizations so as not
@@ -151,6 +152,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.csrf',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
+    'base.context_processors.base',
 ]
 
 TEMPLATE_DIRS = (
@@ -183,7 +185,7 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 # DEBUG_TOOLBAR_PANELS = (
-#     #'debug_toolbar_user_panel.panels.UserPanel',
+# #'debug_toolbar_user_panel.panels.UserPanel',
 #     'debug_toolbar.panels.version.VersionDebugPanel',
 #     'debug_toolbar.panels.timer.TimerDebugPanel',
 #     'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
@@ -230,7 +232,7 @@ DATABASES = {
 
 # Recipients of traceback emails and other notifications.
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+# ('Your Name', 'your_email@domain.com'),
 )
 MANAGERS = ADMINS
 
@@ -264,6 +266,7 @@ ALLOWED_HOSTS = []
 # CELERY_RESULT_BACKEND = 'amqp'
 
 INTERNAL_IPS = ('127.0.0.1')
+SITE_ID = 1
 
 # Enable this option for memcached
 #CACHE_BACKEND= "memcached://127.0.0.1:11211/"
