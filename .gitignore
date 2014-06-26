@@ -15,8 +15,6 @@ tmp/*
 *.mo
 *.log
 *.db
-db/
-test_db/
 .vagrant
 *.sublime-project
 *.sublime-workspace

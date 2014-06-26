@@ -2,39 +2,26 @@
 
 {% load staticfiles %}
 
-{% block css %}
-  {{ block.super }}
-  <style>
-      /* Move down content because we have a fixed navbar that is 50px tall */
-    body {
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
-  </style>
-{% endblock css %}
-
 {% block page_title %}Home{% endblock %}
 {% block page_class %}home-page{% endblock %}
 
 {% block header %}
   <div class="jumbotron">
-    <div class="container">
-      <div class="clearfix" xmlns="http://www.w3.org/1999/html">
-        <div class="pull-left">
-          {% block logo_pre_main %}{% endblock %}
-          {% block logo_main %}
-            <img src="{% static "img/logo_gnode.png" %}" alt="Logo Main">
-          {% endblock %}
+    <div class="clearfix" xmlns="http://www.w3.org/1999/html">
+      <div class="pull-left">
+        {% block logo_pre_main %}{% endblock %}
+        {% block logo_main %}
+          <img src="{% static "img/logo_gnode.png" %}" alt="Logo Main">
+        {% endblock %}
+      </div>
+      <div class="pull-right">
+        <div class="row pull-right" style="height:2em; padding:.5em;">
+          <img src="{% static "img/logo_incf.png" %}" alt="INCF Logo" style="max-height: 100%;">
+          <img src="{% static "img/logo_bmbf.png" %}" alt="BMBF Logo" style="max-height: 100%;">
         </div>
-        <div class="pull-right">
-          <div class="row pull-right" style="height:2em; padding:.5em;">
-            <img src="{% static "img/logo_incf.png" %}" alt="INCF Logo" style="max-height: 100%;">
-            <img src="{% static "img/logo_bmbf.png" %}" alt="BMBF Logo" style="max-height: 100%;">
-          </div>
-          <div class="row pull-right" style="height:4em; padding:.5em;">
-            <img src="{% static "img/logo_tub.png" %}" alt="TUB Logo" style="max-height: 100%;">
-            <img src="{% static "img/logo_bel.png" %}" alt="BEL Logo" style="max-height: 100%;">
-          </div>
+        <div class="row pull-right" style="height:4em; padding:.5em;">
+          <img src="{% static "img/logo_tub.png" %}" alt="TUB Logo" style="max-height: 100%;">
+          <img src="{% static "img/logo_bel.png" %}" alt="BEL Logo" style="max-height: 100%;">
         </div>
       </div>
     </div>
