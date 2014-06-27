@@ -30,7 +30,7 @@ SUPPORTED_NONLOCALES = ['media', 'admin', 'static']
 LANGUAGE_CODE = 'en-gb'
 
 # Defines the views served for root URLs.
-ROOT_URLCONF = 'gnode_spike2.urls'
+ROOT_URLCONF = 'spike_gnode.urls'
 
 # Application definition
 INSTALLED_APPS = (
@@ -49,6 +49,8 @@ INSTALLED_APPS = (
     'djcelery',
     'debug_toolbar',
     'compressor',
+    'registration',
+    'bootstrap3',
 
     # Database migrations
     'south',
@@ -121,7 +123,7 @@ USE_TZ = True
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'Europe/Berlin'
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -177,7 +179,7 @@ def custom_show_toolbar(request):
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
-    'SHOW_TOOLBAR_CALLBACK': 'gnode_spike2.settings.base.custom_show_toolbar',
+    'SHOW_TOOLBAR_CALLBACK': 'spike_gnode.settings.base.custom_show_toolbar',
     'HIDE_DJANGO_SQL': True,
     'TAG': 'body',
     'SHOW_TEMPLATE_CONTEXT': True,
@@ -203,7 +205,7 @@ DEBUG_TOOLBAR_CONFIG = {
 FILE_UPLOAD_PERMISSIONS = 0o0664
 
 # The WSGI Application to use for runserver
-WSGI_APPLICATION = 'gnode_spike2.wsgi.application'
+WSGI_APPLICATION = 'spike_gnode.wsgi.application'
 
 # Define your database connections
 DATABASES = {
@@ -269,14 +271,14 @@ INTERNAL_IPS = ('127.0.0.1')
 SITE_ID = 1
 
 # Enable this option for memcached
-#CACHE_BACKEND= "memcached://127.0.0.1:11211/"
+CACHE_BACKEND = "memcached://127.0.0.1:11211/"
 
 # Set this to true if you use a proxy that sets X-Forwarded-Host
 #USE_X_FORWARDED_HOST = False
 
 SERVER_EMAIL = "webmaster@example.com"
 DEFAULT_FROM_EMAIL = "webmaster@example.com"
-SYSTEM_EMAIL_PREFIX = "[gnode_spike2]"
+SYSTEM_EMAIL_PREFIX = "[spike_gnode]"
 
 ## Log settings
 
@@ -288,14 +290,14 @@ LOGGING_CONFIG = None
 LOGGING = {
     'version': 1,
     'loggers': {
-        'gnode_spike2': {
+        'spike_gnode': {
             'level': "DEBUG"
         }
     }
 }
 
 # Common Event Format logging parameters
-#CEF_PRODUCT = 'gnode_spike2'
-#CEF_VENDOR = 'Your Company'
+#CEF_PRODUCT = 'Spike G-Node'
+#CEF_VENDOR = 'German Neuroinformatics Node'
 #CEF_VERSION = '0'
 #CEF_DEVICE_VERSION = '0'

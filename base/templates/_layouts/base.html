@@ -1,4 +1,5 @@
 {% load compress %}
+{% load i18n %}
 {% load staticfiles %}
 
 <!doctype html>
@@ -11,7 +12,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   {# <title>{% block page_title %}{{ _("Your Site") }}{% endblock %}</title> #}
-  <title>{% if SITE_NAME %}{{ SITE_NAME }} | {% endif %}{% block page_title %}{% endblock %}</title>
+  <title>{% if SITE_NAME %}{{ SITE_NAME }} | {% endif %}{% block title %}{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   <meta name="author" content="{% block meta_author %}{% endblock %}">
   {% block viewport %}
@@ -37,46 +38,40 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
   <header>
-    <div class="container">
-      {% block navbar %}
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="{% url "home" %}">
-                <img src="{% static "img/logo_gnode_small.png" %}" style="height:20px;width:20px;">{% if SITE_NAME %}
-                {{ SITE_NAME }}{% endif %}</a>
-            </div>
-            <div class="navbar-collapse collapse">
-              <form class="navbar-form navbar-right">
-                <div class="form-group">
-                  <input type="text" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-              </form>
-            </div>
-            <!--/.navbar-collapse -->
+    {% block navbar %}
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url "home" %}">
+              <img src="{% static "img/logo_gnode_small.png" %}">
+              {% if SITE_NAME %}{{ SITE_NAME }}{% else %}SITE_NAME{% endif %}</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            {% block nav %}{% include "_layouts/_main_bar.html" %}{% endblock %}
+            {% block account_bar %}{% include "_layouts/_account_bar.html" %}{% endblock %}
           </div>
         </div>
-      {% endblock %}
-      {% block header %}{% endblock %}
-    </div>
+      </div>
+    {% endblock %}
+    {% block header %}{% endblock %}
   </header>
   <div role="main">
-    <!-- start content -->
-    {% block content %}{% endblock %}
-    <!-- end content -->
+    <div class="container">
+      <!-- start content -->
+      {% block content %}{% endblock %}
+      <!-- end content -->
+    </div>
   </div>
   <footer>
-    {% block footer %}{% include "_layouts/footer.html" %}{% endblock footer %}
+    <div class="container">
+      {% block footer %}{% include "_layouts/_footer.html" %}{% endblock footer %}
+    </div>
   </footer>
   <!-- end site -->
 

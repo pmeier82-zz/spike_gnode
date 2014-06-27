@@ -14,13 +14,13 @@ from fabric.operations import _prefix_commands, _prefix_env_vars
 #from fabric.context_managers import cd, lcd, settings, hide
 
 # CHANGEME
-env.hosts = ['user@gnode_spike2.example.com']
-env.code_dir = '/srv/www/gnode_spike2'
-env.project_dir = '/srv/www/gnode_spike2/gnode_spike2'
-env.static_root = '/srv/www/gnode_spike2/static/'
-env.virtualenv = '/srv/www/gnode_spike2/.virtualenv'
-env.code_repo = 'git@github.com:user/gnode_spike2.git'
-env.django_settings_module = 'gnode_spike2.settings'
+env.hosts = ['user@spike_gnode.example.com']
+env.code_dir = '/srv/www/spike_gnode'
+env.project_dir = '/srv/www/spike_gnode/spike_gnode'
+env.static_root = '/srv/www/spike_gnode/static/'
+env.virtualenv = '/srv/www/spike_gnode/.virtualenv'
+env.code_repo = 'git@github.com:user/spike_gnode.git'
+env.django_settings_module = 'spike_gnode.settings'
 
 # Python version
 PYTHON_BIN = "python2.7"
@@ -135,7 +135,7 @@ def webserver_restart():
 def restart():
     """ Restart the wsgi process """
     with cd(env.code_dir):
-        run("touch %s/gnode_spike2/wsgi.py" % env.code_dir)
+        run("touch %s/spike_gnode/wsgi.py" % env.code_dir)
 
 
 def build_static():

@@ -3,7 +3,7 @@ import os
 import sys
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gnode_spike2.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "spike_gnode.settings")
     # Add the lib/ directory to the system path
     sys.path.append("lib")
 

@@ -80,7 +80,7 @@ LOGGING_CONFIG = None
 LOGGING = {
     'version': 1,
     'loggers': {
-        'gnode_spike2': {
+        'spike_gnode': {
             'level': "DEBUG"
         }
     }

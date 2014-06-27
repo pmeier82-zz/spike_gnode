@@ -33,3 +33,8 @@ South
 
 # Feature testing
 #django-waffle
+
+# registration/profile
+django-registration
+
+django-bootstrap3
