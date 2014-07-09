@@ -57,6 +57,7 @@ INSTALLED_APPS = (
 
     # Application base, containing global templates.
     'base',
+    'datafile',
 
     # Local apps, referenced via appname
 )
@@ -301,3 +302,5 @@ LOGGING = {
 #CEF_VENDOR = 'German Neuroinformatics Node'
 #CEF_VERSION = '0'
 #CEF_DEVICE_VERSION = '0'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

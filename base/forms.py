@@ -4,5 +4,5 @@ from registration.forms import RegistrationForm
 from django import forms
 
 
-class ExRegistrationForm(RegistrationForm):
-    is_human = forms.ChoiceField(label="Are you human?:")
+class SpikeGnodeRegistrationForm(RegistrationForm):
+    is_human = forms.ChoiceField(label="Are you human?:", choices=((True, "YES"), (False, "NO")))
