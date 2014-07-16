@@ -36,10 +36,9 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
 
-  <!-- start site -->
   <header>
     {% block navbar %}
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -58,16 +57,16 @@
             {% block nav_account %}{% include "_layouts/_nav_account.html" %}{% endblock %}
           </div>
         </div>
-      </div>
+      </nav>
     {% endblock %}
     {% block header %}{% endblock %}
+    <div class="container">
+      {% bootstrap_messages %}
+    </div>
   </header>
   <div role="main">
     <div class="container">
-      {% bootstrap_messages %}
-      <!-- start content -->
       {% block content %}{% endblock %}
-      <!-- end content -->
     </div>
   </div>
   <footer>
@@ -75,9 +74,8 @@
       {% block footer %}{% include "_layouts/_footer.html" %}{% endblock footer %}
     </div>
   </footer>
-  <!-- end site -->
 
-  <!-- scripts extern -->
+  <!-- start scripts -->
   {% block cdn_js %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{% static 'js/libs/jquery-1.9.1.min.js' %}" ><\/script>')</script>
@@ -101,7 +99,7 @@
       s.parentNode.insertBefore(g, s)
     }(document, 'script'));
   </script>
-  <!-- end GA snippet -->
+  <!-- end scripts -->
 {% endblock %}
 </body>
 </html>

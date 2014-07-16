@@ -1,5 +1,6 @@
 {% load i18n %}
 
+<!-- start navbar account -->
 <ul class="nav navbar-nav navbar-right">
   {% if request.user.is_authenticated %}
     <li class="dropdown">
@@ -14,6 +15,7 @@
           {% trans "Settings" %}
         </a></li>
         {% if user.is_staff %}
+          <li class="divider"></li>
           <li><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}">
             <i class="fa fa-cog"></i>
             {% trans "Administration" %}
@@ -27,23 +29,36 @@
       </ul>
     </li>
   {% else %}
-    <form class="navbar-form navbar-right"
-          method="post"
-          action="{% url "auth_login" %}">
-      {% csrf_token %}
-      <div class="form-group">
-        <label class="sr-only" for="topbar-username">Username</label>
-        <input class="form-control" id="topbar-username" maxlength="254" name="username" placeholder="Username"
-               required="required" title="" type="text">
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="topbar-password">Password</label>
-        <input class="form-control" id="topbar-password" name="password" placeholder="Password" required="required"
-               title="" type="password">
-      </div>
-      <input type="hidden" name="next" value="{% url "home" %}"/>
-      <button type="submit" class="btn btn-success navbar-btn">{% trans "Login" %}</button>
-      <a class="btn btn-default navbar-btn" href="{% url "registration_register" %}">{% trans "Register" %}</a>
-    </form>
+    {#    <li class="divider"></li>#}
+    <li><a href="{% url "registration_register" %}">{% trans "Register" %}</a></li>
+    {#    <li class="divider-vertical"></li>#}
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        {% trans "Login" %}
+        <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu" role="menu">
+        <form class="navbar-form"
+              method="post" role="form"
+              action="{% url "auth_login" %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="sr-only" for="topbar-username">Username</label>
+            <input class="form-control" id="topbar-username" maxlength="254"
+                   name="username" placeholder="Username"
+                   required="required" title="" type="text">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="topbar-password">Password</label>
+            <input class="form-control" id="topbar-password"
+                   name="password" placeholder="Password"
+                   required="required" title="" type="password">
+          </div>
+          <input type="hidden" name="next" value="{% url "home" %}"/>
+          <button type="submit" class="btn btn-success btn-block">{% trans "Login" %}</button>
+        </form>
+      </ul>
+    </li>
   {% endif %}
 </ul>
+<!-- end navbar account -->
