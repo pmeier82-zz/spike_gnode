@@ -1,17 +1,16 @@
-{% extends "registration/base.html" %}
+{% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Account activation error{% endblock %}
-
-{% block content %}
-  <div class="container">
-    <div class="row">
-      <h1>Account activation error</h1>
-
-      <div class="alert alert-danger col-md-9">
-        <p>The activation key <strong>{{ activation_key }}</strong> is invalid or expired.</p>
-      </div>
-    </div>
-  </div>
-
+{% block heading %}
+  <h1>{% block title %}{% trans "Account activation failed" %}{% endblock %}</h1>
 {% endblock %}
 
+
+{% comment %}
+**registration/activate.html**
+
+Used if account activation fails. With the default setup, has the following context:
+
+``activation_key``
+    The activation key used during the activation attempt.
+{% endcomment %}

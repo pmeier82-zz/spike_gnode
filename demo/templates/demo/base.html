@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load url from future %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block heading %}
+  <h1>{% block title %}(no title){% endblock %}</h1>
+{% endblock %}
+
+{% block content_main %}
+  <p>
+    <a href="{% url 'demo:demo' %}">home</a>
+    <a href="{% url 'demo:formset_default' %}">formset</a>
+    <a href="{% url 'demo:form_default' %}">form</a>
+    <a href="{% url 'demo:form_by_field' %}">form_by_field</a>
+    <a href="{% url 'demo:form_horizontal' %}">form_horizontal</a>
+    <a href="{% url 'demo:form_inline' %}">form_inline</a>
+    <a href="{% url 'demo:form_with_files' %}">form_with_files</a>
+    <a href="{% url 'demo:pagination' %}">pagination</a>
+    <a href="{% url 'demo:misc' %}">miscellaneous</a>
+  </p>
+  {% block content %}(no content){% endblock %}
+{% endblock %}

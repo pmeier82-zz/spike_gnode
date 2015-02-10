@@ -13,6 +13,7 @@ Sphinx
 nose
 mock
 django-nose
+django-extensions
 coverage
 pep8
 pylint

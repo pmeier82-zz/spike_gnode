@@ -30,7 +30,7 @@
     </li>
   {% else %}
     {#    <li class="divider"></li>#}
-    <li><a href="{% url "registration_register" %}">{% trans "Register" %}</a></li>
+    <li><a type="button" href="{% url "registration_register" %}">{% trans "Register" %}</a></li>
     {#    <li class="divider-vertical"></li>#}
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -38,25 +38,32 @@
         <i class="fa fa-caret-down"></i>
       </a>
       <ul class="dropdown-menu" role="menu">
-        <form class="navbar-form"
-              method="post" role="form"
-              action="{% url "auth_login" %}">
-          {% csrf_token %}
-          <div class="form-group">
-            <label class="sr-only" for="topbar-username">Username</label>
-            <input class="form-control" id="topbar-username" maxlength="254"
-                   name="username" placeholder="Username"
-                   required="required" title="" type="text">
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="topbar-password">Password</label>
-            <input class="form-control" id="topbar-password"
-                   name="password" placeholder="Password"
-                   required="required" title="" type="password">
-          </div>
-          <input type="hidden" name="next" value="{% url "home" %}"/>
-          <button type="submit" class="btn btn-success btn-block">{% trans "Login" %}</button>
-        </form>
+        <li><a href="{% url "django.contrib.auth.views.login" %}">
+          <i class="fa fa-user"></i>
+          {% trans "Login Page" %}
+        </a></li>
+        <li class="divider"></li>
+        <li>
+          <form class="navbar-form"
+                method="post" role="form"
+                action="{% url "auth_login" %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="sr-only" for="topbar-username">Username</label>
+              <input class="form-control" id="topbar-username" maxlength="254"
+                     name="username" placeholder="Username"
+                     required="required" title="" type="text">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="topbar-password">Password</label>
+              <input class="form-control" id="topbar-password"
+                     name="password" placeholder="Password"
+                     required="required" title="" type="password">
+            </div>
+            <input type="hidden" name="next" value="{% url "home" %}"/>
+            <button type="submit" class="btn btn-success btn-block">{% trans "Login" %}</button>
+          </form>
+        </li>
       </ul>
     </li>
   {% endif %}

@@ -1,1 +1,4 @@
-"""Application base, containing global templates."""
+# -*- coding: utf-8 -*-
+
+__author__ = "pmeier82"
+__version__ = "0.1"

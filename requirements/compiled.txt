@@ -1,6 +1,4 @@
-# Choose your databases adapter
-psycopg2
-#MySQL-python
+# compiled packages
 
-# for bcrypt passwords
+psycopg2
 bcrypt

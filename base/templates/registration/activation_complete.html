@@ -1,18 +1,24 @@
-{% extends "registration/base.html" %}
+{% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Account activation complete{% endblock %}
+{% block heading %}
+  <h1>{% block title %}{% trans "Account Activated" %}{% endblock %}</h1>
+{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <h1>Success!</h1>
-
-    <p class="lead">Account successfully activated!</p>
-
-    <p>You can now sign in to the website.</p>
-
-    <p><a href="{% url 'django.contrib.auth.views.login' %}"
-          class="btn btn-success"
-          role="button">Sign in</a>
-    </p>
-  </div>
+  <p>
+    {% trans "Your account is now activated." %}
+    {% if not user.is_authenticated %}
+      {% trans "You can log in." %}
+    {% endif %}
+  </p>
 {% endblock %}
+
+
+{% comment %}
+**registration/activation_complete.html**
+
+Used after successful account activation. This template has no context
+variables of its own, and should simply inform the user that their
+account is now active.
+{% endcomment %}

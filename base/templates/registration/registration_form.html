@@ -1,28 +1,28 @@
-{% extends "registration/base.html" %}
-
-{% load bootstrap3 %}
+{% extends "base.html" %}
 {% load i18n %}
+{% load bootstrap3 %}
+
+{% block heading %}
+  <h1>{% block title %}{% trans "Register for an account" %}{% endblock %}</h1>
+{% endblock %}
 
 {% block content %}
-  <div class="row">
-    <div class="col-sm-offset-2 col-sm-10">
-      <h1>{% block title %}Registration{% endblock %}</h1>
-
-      <p>Already registered? <a href="{% url 'django.contrib.auth.views.login' %}">Login here.</a></p>
-    </div>
-  </div>
-
-  <form action="{% url 'registration_register' %}"
-        method="post" role="form" class="form-horizontal">
+  <form role="form" class="form-horizontal" method="post" action="">
     {% csrf_token %}
-    {% bootstrap_form form layout='horizontal' %}
-    {% buttons %}
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">
-          {% bootstrap_icon "check" %}
-          {% trans "Submit" %}
-        </button>
-      </div>
-    {% endbuttons %}
+    {% bootstrap_form form layout="horizontal" %}
+    {% buttons submit="Submit" reset="Cancel" layout="horizontal" %}{% endbuttons %}
   </form>
 {% endblock %}
+
+
+{% comment %}
+**registration/registration_form.html**
+Used to show the form users will fill out to register. By default, has
+the following context:
+
+``form``
+    The registration form. This will be an instance of some subclass
+    of ``django.forms.Form``; consult `Django's forms documentation
+    <http://docs.djangoproject.com/en/dev/topics/forms/>`_ for
+    information on how to display this in a template.
+{% endcomment %}

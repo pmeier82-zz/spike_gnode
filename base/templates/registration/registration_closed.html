@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block heading %}
+  <h1>{% block title %}{% trans "Registration is closed" %}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>{% trans "Sorry, but registration is closed at this moment. Please come back later." %}</p>
+{% endblock %}

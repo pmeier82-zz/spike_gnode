@@ -1,11 +1,8 @@
-{% extends '_layouts/base.html' %}
-
+{% extends "base.html" %}
 {% load i18n %}
 
-{% block header %}
-  <div class="container">
-    <h1>{% block title %}{% trans 'Team' %} {% endblock %}</h1>
-  </div>
+{% block heading %}
+  <h1>{% block title %}{% trans 'Team' %} {% endblock %}</h1>
 {% endblock %}
 
 {% block content %}

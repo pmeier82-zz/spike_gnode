@@ -1,22 +1,29 @@
-""" Default urlconf for gnode_spike2 """
+# -*- coding: utf-8 -*-
 
 from django.conf.urls import include, patterns, url
 from django.contrib import admin
+from django.conf import settings
+from rest_framework import routers
 
 admin.autodiscover()
 
-
-def bad(request):
-    """ Simulates a server error """
-    1 / 0
-
-
 urlpatterns = patterns(
-    '',
-    # Examples:
-    # url(r'^$', 'spike_gnode.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^bad/$', bad),
-    url(r'', include('base.urls')),
+    "",
+    url(r"^admin/", include(admin.site.urls)),
+    url(r"^bad/$", lambda request: 1 / 0),
+    url(r"^", include("base.urls")),
+    url(r"^", include("djspikeval.urls")),
 )
+
+# bootstrap3 demos in the debug environment
+if settings.DEBUG:
+    import demo.urls
+
+    demo_urls = patterns(
+        "",
+        url(r'^demo/', include(demo.urls, "demo", "demo"))
+    )
+    urlpatterns += demo_urls
+
+if __name__ == "__main__":
+    pass

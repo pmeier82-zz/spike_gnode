@@ -1,8 +1,15 @@
-"""forms for the base application"""
+# -*- coding: utf-8 -*-
 
+from captcha.fields import ReCaptchaField
 from registration.forms import RegistrationForm
-from django import forms
+
+__author__ = "pmeier82"
+__all__ = ["CaptchaRegistrationForm"]
 
 
-class SpikeGnodeRegistrationForm(RegistrationForm):
-    is_human = forms.ChoiceField(label="Are you human?:", choices=((True, "YES"), (False, "NO")))
+class CaptchaRegistrationForm(RegistrationForm):
+    captcha = ReCaptchaField()
+
+
+if __name__ == "__main__":
+    pass

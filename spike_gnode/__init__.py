@@ -1,1 +1,1 @@
-""" gnode_spike2 """
+# -*- coding: utf-8 -*-

@@ -2,14 +2,14 @@
 -r compiled.txt
 
 # Django stuff
-Django>=1.6
+#Django>=1.7
+-e git+https://github.com:django/django.git@stable/1.7.x#egg=Django
 
 # Templates
 django_compressor
 
 # Security
 bleach
-#cef
 
 # Logging
 #raven
@@ -25,16 +25,23 @@ django-celery
 # Caching
 python-memcached
 
-# Admin
-django-debug-toolbar
-
-# Migrations
-South
-
 # Feature testing
 #django-waffle
 
-# registration/profile
-django-registration
-
+# frontend
+django-debug-toolbar
+#django-registration is unmaintained, we use a upstream port from @gh:macropin
+django-registration-redux
 django-bootstrap3
+django-pagination-bootstrap
+django-sorting-bootstrap
+django-recaptcha
+django-taggit
+-e git+https://github.com/laplacesdemon/django-bootstrap-wysiwyg.git#egg=django-bootstrap-wysiwyg
+
+# restframework
+#djangorestframework
+#markdown
+#django-filter
+
+## EOF
