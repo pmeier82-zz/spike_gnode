@@ -43,14 +43,11 @@ class HashedFileSystemStorage(FileSystemStorage):
             content.seek(cursor)
 
     def save(self, name, content):
-        # Get the proper name for the file, as it will actually be saved.
+        print "{}::save({})".format(self.__class__.__name__, name)
         if name is None:
             name = content.name
-
         name = self._get_content_name(name, content)
         name = self._save(name, content)
-
-        # Store filename with forward slashes, even on Windows
         return force_unicode(name.replace('\\', '/'))
 
     def _save(self, name, content):
@@ -58,16 +55,17 @@ class HashedFileSystemStorage(FileSystemStorage):
         try:
             return super(HashedFileSystemStorage, self)._save(new_name, content)
         except ContentExists:
-            # File already exists, so we can safely do nothing
-            # because their contents match.
             pass
         except OSError, e:
             if e.errno == errno.EEXIST:
-                # We have a safe storage layer and file exists.
                 pass
             else:
                 raise
         return new_name
+
+    def delete(self, name):
+        print "{}::delete({})".format(self.__class__.__name__, name)
+        return super(HashedFileSystemStorage, self).delete(name)
 
 
 if __name__ == "__main__":

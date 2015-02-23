@@ -10,7 +10,14 @@ from registration.signals import user_registered
 __author__ = "pmeier82"
 
 
+# PROFILE
+
 class Profile(models.Model):
+    """user profile model"""
+
+    class Meta:
+        app_label = "base"
+
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         unique=True)
@@ -35,19 +42,34 @@ class Profile(models.Model):
         return unicode(self.__str__())
 
 
+def user_registered_callback(sender, instance, request, **kwargs):
+    profile = Profile.objects.get_or_create(user=instance)
+    profile.title = request.POST.get("title", "")
+    profile.save()
+
+
+user_registered.connect(user_registered_callback)
+
+# ASSET
+
+def UPLOAD_TO_HANDLER(obj, fname):
+    folder = getattr(obj, "kind", "default")
+    return "{}/{}".format(folder, fname)
+
+
 class Asset(TimeStampedModel):
-    """uploaded file asset, proxy this model for use in your app"""
+    """generic file asset model"""
 
     class Meta:
         app_label = "base"
 
-    UPLOAD_DIR = "default"
+    UPLOAD_TO = "default"
 
     # fields
     name = models.CharField(max_length=255, unique=False)
     mine_type = models.CharField(max_length=255, unique=False)
-    data = models.FileField(upload_to=UPLOAD_DIR)
-    kind = models.CharField(max_length=255, unique=False, null=False, default=UPLOAD_DIR)
+    data = models.FileField(upload_to=UPLOAD_TO_HANDLER)
+    kind = models.CharField(max_length=255, unique=False, null=False, default=UPLOAD_TO)
 
     # generic foreign key
     content_type = models.ForeignKey(ContentType, null=True)
@@ -64,25 +86,23 @@ class Asset(TimeStampedModel):
     # django special methods
     @models.permalink
     def get_absolute_url(self):
-        return "serve_file", (self.pk,), {}
+        return "asset:serve", (self.pk,), {}
 
     @models.permalink
     def get_delete_url(self):
-        return "file_delete", (self.pk,), {}
+        return "asset:delete", (self.pk,), {}
 
     # interface
     def save(self, *args, **kwargs):
-        self.kind = self.UPLOAD_DIR
         super(Asset, self).save(*args, **kwargs)
 
+    def delete(self, *args, **kwargs):
+        super(Asset, self).delete(*args, **kwargs)
 
-def user_registered_callback(sender, instance, request, **kwargs):
-    profile = Profile.objects.get_or_create(user=instance)
-    profile.title = request.POST.get("title", "")
-    profile.save()
+    @classmethod
+    def get_upload_path(cls, *args, **kwargs):
+        return self.UPLOAD_PATH
 
-
-user_registered.connect(user_registered_callback)
 
 if __name__ == "__main__":
     pass

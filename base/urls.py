@@ -10,6 +10,7 @@ __author__ = "pmeier82"
 
 urlpatterns = patterns(
     "base.views",
+
     # registration
     url(r"accounts/register/$",
         RegistrationView.as_view(form_class=CaptchaRegistrationForm),
@@ -18,8 +19,9 @@ urlpatterns = patterns(
 
     # base urls
     url(r"^$", TemplateView.as_view(template_name="base/home.html"), name="home"),
-    url(r'^imprint$', TemplateView.as_view(template_name="base/imprint.html"), name="imprint"),
-    url(r'^team$', TemplateView.as_view(template_name="base/team.html"), name="team"),
-)
+    url(r"^imprint$", TemplateView.as_view(template_name="base/imprint.html"), name="imprint"),
+    url(r"^team$", TemplateView.as_view(template_name="base/team.html"), name="team"),
 
-## EOF
+    # assets
+    url(r"^serve_asset/(?P<pk>\d+)/$", "serve_asset", name="serve_asset"),
+)
