@@ -101,7 +101,7 @@ class Asset(TimeStampedModel):
 
     @classmethod
     def get_upload_path(cls, *args, **kwargs):
-        return self.UPLOAD_PATH
+        return cls.UPLOAD_PATH
 
 
 if __name__ == "__main__":

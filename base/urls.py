@@ -8,6 +8,12 @@ from forms import CaptchaRegistrationForm
 
 __author__ = "pmeier82"
 
+patterns_asset = patterns(
+    "base.views",
+    url(r"^asset/(?P<pk>\d+)/$", "serve_asset", name="serve"),
+    url(r"^serve_asset/(?P<pk>\d+)/$", "delete_asset", name="delete"),
+)
+
 urlpatterns = patterns(
     "base.views",
 
@@ -22,6 +28,6 @@ urlpatterns = patterns(
     url(r"^imprint$", TemplateView.as_view(template_name="base/imprint.html"), name="imprint"),
     url(r"^team$", TemplateView.as_view(template_name="base/team.html"), name="team"),
 
-    # assets
-    url(r"^serve_asset/(?P<pk>\d+)/$", "serve_asset", name="serve_asset"),
+    # asset
+    url(r"^asset/", include(patterns_asset, namespace="asset")),
 )

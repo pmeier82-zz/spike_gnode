@@ -36,10 +36,10 @@ def serve_asset(request, pk):
 
 
 @login_required
-def delete(request, pk):
+def delete_asset(request, pk):
     """delete datafile"""
     try:
-        df = Asset.objects.get(pk=pk)
+        df = get_object_or_404(Asset, pk=pk)
     except Asset.DoesNotExist:
         msg = "Error: could not find Datafile with id=`{}`".format(pk)
         messages.error(request, msg)
@@ -49,3 +49,7 @@ def delete(request, pk):
     df.delete()
     messages.success(request, "Datafile {:s} deleted".format(df))
     return redirect(co)
+
+
+if __name__ == "__main__":
+    pass

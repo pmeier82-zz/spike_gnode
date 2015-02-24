@@ -44,8 +44,8 @@ INSTALLED_APPS = (
     "registration",
     "bootstrap3",
     # rest framework
-    "rest_framework",
-    "rest_framework.authtoken",
+    # "rest_framework",
+    # "rest_framework.authtoken",
     # base and initial data
     "base",
     "initial_data",
