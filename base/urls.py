@@ -4,18 +4,20 @@ from django.conf.urls import include, patterns, url
 from django.views.generic import TemplateView
 from registration.backends.default.views import RegistrationView
 
-from forms import CaptchaRegistrationForm
+from .views import AssetCreate, AssetDelete, AssetServe
+from .forms import CaptchaRegistrationForm
 
 __author__ = "pmeier82"
 
 patterns_asset = patterns(
-    "base.views",
-    url(r"^asset/(?P<pk>\d+)/$", "serve_asset", name="serve"),
-    url(r"^serve_asset/(?P<pk>\d+)/$", "delete_asset", name="delete"),
+    "",
+    url(r"^create/(?P<kind>\w+)/(?P<model>\w+)/(?P<pk>\d+)/$", AssetCreate.as_view(), name="create"),
+    url(r"^(?P<pk>\d+)/delete/$", AssetDelete.as_view(), name="delete"),
+    url(r"^(?P<pk>\d+)/serve/$", AssetServe.as_view(), name="serve"),
 )
 
 urlpatterns = patterns(
-    "base.views",
+    "",
 
     # registration
     url(r"accounts/register/$",
@@ -31,3 +33,6 @@ urlpatterns = patterns(
     # asset
     url(r"^asset/", include(patterns_asset, namespace="asset")),
 )
+
+if __name__ == "__main__":
+    pass

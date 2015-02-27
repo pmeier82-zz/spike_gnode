@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from django.conf import settings
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
@@ -7,6 +8,7 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from registration.signals import user_registered
 
+_all = ["Asset", "Profile", "user_registered_callback"]
 __author__ = "pmeier82"
 
 
@@ -67,7 +69,7 @@ class Asset(TimeStampedModel):
 
     # fields
     name = models.CharField(max_length=255, unique=False)
-    mine_type = models.CharField(max_length=255, unique=False)
+    data_orig_name = models.CharField(max_length=255, unique=False)
     data = models.FileField(upload_to=UPLOAD_TO_HANDLER)
     kind = models.CharField(max_length=255, unique=False, null=False, default=UPLOAD_TO)
 
@@ -77,11 +79,8 @@ class Asset(TimeStampedModel):
     content_object = generic.GenericForeignKey()
 
     # special methods
-    def __str__(self):
-        return str(self.name)
-
     def __unicode__(self):
-        return unicode(self.name)
+        return unicode("{}: {}".format(self.__class__.__name__, self.name))
 
     # django special methods
     @models.permalink
@@ -98,10 +97,6 @@ class Asset(TimeStampedModel):
 
     def delete(self, *args, **kwargs):
         super(Asset, self).delete(*args, **kwargs)
-
-    @classmethod
-    def get_upload_path(cls, *args, **kwargs):
-        return cls.UPLOAD_PATH
 
 
 if __name__ == "__main__":

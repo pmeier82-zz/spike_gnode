@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 from django.contrib import admin
 from base.models import Profile, Asset
 
 __author__ = "pmeier82"
 
 
-class BaseProfileAdmin(admin.ModelAdmin):
+class ProfileAdmin(admin.ModelAdmin):
     pass
 
 
-class BaseFileAdmin(admin.ModelAdmin):
+class AssetAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Profile, BaseProfileAdmin)
-admin.site.register(Asset, BaseFileAdmin)
+admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Asset, AssetAdmin)
 
 if __name__ == "__main__":
     pass

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
 import errno
 import hashlib
 import os
@@ -9,6 +10,7 @@ from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import force_unicode
 
 __all__ = ["HashedFileSystemStorage"]
+__author__ = "pmeier82"
 
 
 class ContentExists(Exception):

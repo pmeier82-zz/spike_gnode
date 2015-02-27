@@ -1,0 +1,52 @@
+{% load i18n %}
+{% load base %}
+
+{% if heading %}
+  <h3>Attachments
+    <small>additional files describing this {{ heading }}.</small>
+  </h3>
+{% endif %}
+<table class="table table-condensed table-hover">
+  <thead>
+  <tr>
+    <th>{% trans "Name" %}</th>
+    <th>{% trans "Size" %}</th>
+    <th>{% trans "Date" %}</th>
+    <th>{% trans "Attached" %}</th>
+    <th>{% trans "Actions" %}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for item in obj.attachment_set.all %}
+    <tr>
+      <td>
+        <nobr data-toggle="tooltip" data-placement="right" title="{{ item.data.name }}">
+          {{ item.name }}</nobr>
+      </td>
+      <td>
+        {{ item.data.size|filesizeformat }}
+      </td>
+      <td>
+        {% fa_text item.modified|date "clock-o" %}
+      </td>
+      <td>
+        {{ item.content_object }}
+      </td>
+      <td>
+        <div class="btn-group">
+          <a href="{% url "asset:serve" item.id %}"
+             class="btn btn-default btn-xs">{% trans "download" %}</a>
+          {% if item.content_object.owner == user or user.is_superuser %}
+            <a href="{% url "asset:delete" item.id %}"
+               class="btn btn-default btn-xs">{% trans "delete" %}</a>
+          {% endif %}
+        </div>
+      </td>
+    </tr>
+  {% empty %}
+    <tr>
+      <td class="warning" colspan="6">No attachments.</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>

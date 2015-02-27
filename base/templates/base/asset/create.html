@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Create" %} {{ block.super }}{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    {% include "base/_create.html" with form_id="create-asset" %}
+  {% else %}
+    <p>NOT REGISTERED!</p>
+  {% endif %}
+{% endblock %}

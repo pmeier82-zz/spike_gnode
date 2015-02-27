@@ -26,9 +26,8 @@ def serve_asset(request, pk):
     """serve a asset for download"""
 
     try:
-        bf = get_object_or_404(Asset, pk=pk)
-        mine_type = bf.mine_type or None
-        return sendfile(request, bf.file.path, attachment=True, attachment_filename=bf.name)
+        asset = get_object_or_404(Asset, pk=pk)
+        return sendfile(request, asset.data.path, attachment=True, attachment_filename=asset.data.name)
     except Asset.DoesNotExist:
         msg = "Error: could not find Datafile with id=`{}`".format(pk)
         messages.error(request, msg)
@@ -39,15 +38,15 @@ def serve_asset(request, pk):
 def delete_asset(request, pk):
     """delete datafile"""
     try:
-        df = get_object_or_404(Asset, pk=pk)
+        asset = get_object_or_404(Asset, pk=pk)
     except Asset.DoesNotExist:
         msg = "Error: could not find Datafile with id=`{}`".format(pk)
         messages.error(request, msg)
         raise Http404(msg)
-    co = df.content_object
+    co = asset.content_object
     assert co.has_access(request.user), "insufficient permissions"
-    df.delete()
-    messages.success(request, "Datafile {:s} deleted".format(df))
+    asset.delete()
+    messages.success(request, "Datafile {:s} deleted".format(asset))
     return redirect(co)
 
 
