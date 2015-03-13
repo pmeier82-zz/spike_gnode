@@ -5,11 +5,13 @@
 {% load staticfiles %}
 
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,23 +22,17 @@
   <link rel="shortcut icon" href="{% static "favicon.ico" %}">
   {% block meta %}{% endblock %}
   {% block cdn_css %}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
   {% endblock cdn_css %}
   {% compress css %}
     <link rel="stylesheet" href="{% static "css/base.css" %}">
     {% block css %}{% endblock %}
   {% endcompress %}
-  {% compress js %}
-    <script src="{% static 'js/libs/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
-  {% endcompress %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 </head>
-
 <body class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
 {% block body %}
-  <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-  <![endif]-->
   <header>
     {% block navbar %}
       <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -49,7 +45,6 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{% url "home" %}">
-              {#              <img src="{% static "img/logo_gnode_small.png" %}" alt="GNode Icon">#}
               {% if SITE_NAME %}{{ SITE_NAME }}{% else %}SITE_NAME{% endif %}
             </a>
           </div>
@@ -61,12 +56,26 @@
       </nav>
     {% endblock %}
     <div class="container">
+      <!--[if lt IE 9]>
+      <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <h4>You are using an <strong>outdated</strong> browser!</h4>
+        <p>It is highly recommended you upgrade your browser to improve your overall internet experience and security!</p>
+        <p>
+          <a class="btn btn-danger" href="http://browsehappy.com/">
+            {% trans "Upgrade Browser Now" %}
+          </a>
+          <button type="button" class="btn btn-default" data-dismiss="alert" aria-label="Close">
+            {% trans "Dismiss" %}
+          </button>
+        </p>
+      </div>
+      <![endif]-->
+      {% bootstrap_messages %}
       {% block header %}
         <div class="page-header">
           <h1>{% block heading %}{% endblock %}</h1>
         </div>
       {% endblock %}
-      {% bootstrap_messages %}
     </div>
   </header>
   <div role="main">
@@ -85,7 +94,7 @@
   {% block cdn_js %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{% static 'js/libs/jquery-2.1.1.min.js' %}" ><\/script>')</script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
   {% endblock cdn_js %}
   <!-- scripts intern via compressor -->
   {% compress js %}
@@ -93,17 +102,17 @@
     {% block js %}{% endblock js %}
   {% endcompress %}
   <!-- asynchronous GA snippet -->
-  <script>
-    var _gaq = [
-      ['_setAccount', 'UA-XXXXX-X'],
-      ['_trackPageview']
-    ];
-    (function (d, t) {
-      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g, s)
-    }(document, 'script'));
-  </script>
+  {#  <script>#}
+  {#    var _gaq = [#}
+  {#      ['_setAccount', 'UA-XXXXX-X'],#}
+  {#      ['_trackPageview']#}
+  {#    ];#}
+  {#    (function (d, t) {#}
+  {#      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];#}
+  {#      g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';#}
+  {#      s.parentNode.insertBefore(g, s)#}
+  {#    }(document, 'script'));#}
+  {#  </script>#}
   <!-- end scripts -->
 {% endblock %}
 </body>

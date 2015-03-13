@@ -22,7 +22,7 @@ def active(request, pattern):
 # FONT AWESOME
 
 @register.simple_tag
-def fa_text(text, icons, link=None, color=None, strong=False):
+def fa_text(text, icons, link=None, color=None, strong=False, title=None):
     try:
         text = text.strip()
     except:
@@ -31,8 +31,8 @@ def fa_text(text, icons, link=None, color=None, strong=False):
     rval = "<nobr><i class=\"fa {icons}\"></i> {a}{c}{s}{text}{s_}{c_}{a_}</nobr>"
     return rval.format(
         icons=icons,
-        a="<a href=\"{}\" title=\"{}\">".format(link, text) if link is not None else "",
-        c="<span style=\"color: {};\">".format(color) if color is not None else "",
+        a="<a href=\"{}\">".format(link) if link is not None else "",
+        c="<span style=\"color: {};\" title=\"{}\">".format(color, title or text) if color is not None else "",
         s="<strong>" if strong is True else "",
         text=text,
         s_="</strong>" if strong is True else "",

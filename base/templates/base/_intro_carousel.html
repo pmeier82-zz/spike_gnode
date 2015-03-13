@@ -1,0 +1,83 @@
+{% load i18n %}
+{% load static %}
+
+<div id="intro-carousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#intro-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#intro-carousel" data-slide-to="1"></li>
+    <li data-target="#intro-carousel" data-slide-to="2"></li>
+    <li data-target="#intro-carousel" data-slide-to="3"></li>
+    <li data-target="#intro-carousel" data-slide-to="4"></li>
+    <li data-target="#intro-carousel" data-slide-to="5"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img class="center-block" src="{% static "img/intro_page0.svg" %}" alt="intro">
+
+      <div class="carousel-caption hidden-xs hidden-sm">
+        <p>This service provides datasets of extracellular recordings for the purpose of evaluating spike sorting
+          algorithms. Datasets are available for download and processed with spike sorting algorithms offline. Spike
+          sorting results submitted back to the service are then compared to ground truth, and presented to the
+          submitter as a private report. Public disclosure of reports is voluntary. Aggregated statistics are build
+          for
+          datasets and algorithms from all public reports, establishing a benchmark and performance landscape.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img class="center-block" src="{% static "img/intro_page1.svg" %}" alt="step1">
+
+      <div class="carousel-caption hidden-xs hidden-sm">
+        <p>Interested users will at first select a dataset to process. Each dataset consists of one or more datafiles
+          which are provided for download as a compressed archive. For each datafile the service with have a ground
+          truth sorting that is not disclosed to the user. Datafiles can be trials from live recordings or synthetic
+          data that systematically varies parameters such signal-to-noise ratio, number of units and spiking rate.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img class="center-block" src="{% static "img/intro_page2.svg" %}" alt="step2">
+
+      <div class="carousel-caption hidden-xs hidden-sm">
+        <p>Without interaction with the service users apply spike sorting methods to the downloaded dataset. The service
+          cannot provide the various software and hardware environments, neither the human expertise involved in any
+          unsupervised steps. Therefore we rely on the users have to have their own resources and skills to obtain a
+          spike sorting for each of the datafiles. There are no time or other constraints for this step.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img class="center-block" src="{% static "img/intro_page3.svg" %}" alt="step3">
+
+      <div class="carousel-caption hidden-xs hidden-sm">
+        <p>After the spike sorting has been obtained, one spike sorting for each of the datafiles, along with a
+          description of the spike sorting algorithm, is submitted back to the service.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img class="center-block" src="{% static "img/intro_page4.svg" %}" alt="step4">
+
+      <div class="carousel-caption hidden-xs hidden-sm">
+        <p>The service will automatically start to apply various modules to the submitted spike sorting results. A
+          module of the service works on a pair of spike sorting results, the ground truth and the other the user
+          submission. Each module produces a piece of information about the submitted spike sorting result with respect
+          to the ground truth. Examples of modules are spike train metrics, error statistics and visualisations. All
+          module outputs are collected and form the report, which is at first only visible for the submitting user.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img class="center-block" src="{% static "img/intro_page0.svg" %}" alt="step5">
+
+      <div class="carousel-caption hidden-xs hidden-sm">
+        <p>After inspection the submitting user has the option to disclose the report, at which point it will be
+          available for public inspection. It will also form a new data point in public performance rankings for the
+          applied algorithm on the chosen dataset. Public disclosure is not required! Yet, the collection of spike
+          sorting algorithm performance on structured benchmark data and the public availability of that information are
+          strategic goals of this project, so we strongly encourage disclosure of reports.</p>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#intro-carousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  </a>
+  <a class="right carousel-control" href="#intro-carousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  </a>
+</div>

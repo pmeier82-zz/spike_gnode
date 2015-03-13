@@ -5,7 +5,7 @@
 
 This Django based web-application provides an evaluation backend for spike sorting algorithms.
 
-The concept is based on a set of benchmark dataset that are served by the application. For these benchmark datasets the application will know the spike sorting ground truth. Users can download and apply a spike sorting algorithm of their choice to the datasets and upload the resulting spike train sets back to the website. The uploded spike trainsets will be compared to the ground truth and an error statistic will be build to compare different algorithms on the same benchmark datasets. This is called an Evaluation.
+The concept is based on a set of benchmark dataset that are served by the application. For these benchmark datasets the application will know the spike sorting ground truth. Users can download and apply a spike sorting algorithm of their choice to the datasets and upload the resulting spike train sets back to the website. The uploded spike trainsets will be compared to the ground truth and an error statistic will be build to compare different algorithms on the same benchmark datasets. This is called an Analysis.
 
 Evaluations can be published, so that all users will be able to watch them and compare all published Evaluations against each other and their own unpublished Evaluations.
 

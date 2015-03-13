@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.dispatch.dispatcher import receiver
 from model_utils.models import TimeStampedModel
 from registration.signals import user_registered
 
@@ -44,9 +45,9 @@ class Profile(models.Model):
         return unicode(self.__str__())
 
 
-def user_registered_callback(sender, instance, request, **kwargs):
-    profile = Profile.objects.get_or_create(user=instance)
-    profile.title = request.POST.get("title", "")
+def user_registered_callback(user, request, **kwargs):
+    profile, is_new = Profile.objects.get_or_create(user=user)
+    profile.title = request.POST.get("title", "test")
     profile.save()
 
 
@@ -97,6 +98,11 @@ class Asset(TimeStampedModel):
 
     def delete(self, *args, **kwargs):
         super(Asset, self).delete(*args, **kwargs)
+
+
+@receiver(models.signals.pre_delete, sender=Asset)
+def asset_file_delete(sender, instance, **kwargs):
+    instance.data.delete()
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@
     "model":"sites.site",
     "fields":{
       "domain":"spike.g-node.org",
-      "name":"Spikesorting Evaluation"
+      "name":"Spikesorting Analysis"
     }
   },
   {

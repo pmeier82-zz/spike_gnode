@@ -5,6 +5,7 @@ import errno
 import hashlib
 import os
 
+from django.conf import settings
 from django.core.files import File
 from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import force_unicode
@@ -45,7 +46,8 @@ class HashedFileSystemStorage(FileSystemStorage):
             content.seek(cursor)
 
     def save(self, name, content):
-        print "{}::save({})".format(self.__class__.__name__, name)
+        if getattr(settings, "DEBUG", None) is True:
+            print "{}::save({})".format(self.__class__.__name__, name)
         if name is None:
             name = content.name
         name = self._get_content_name(name, content)
@@ -66,7 +68,8 @@ class HashedFileSystemStorage(FileSystemStorage):
         return new_name
 
     def delete(self, name):
-        print "{}::delete({})".format(self.__class__.__name__, name)
+        if getattr(settings, "DEBUG", None) is True:
+            print "{}::delete({})".format(self.__class__.__name__, name)
         return super(HashedFileSystemStorage, self).delete(name)
 
 

@@ -1,0 +1,78 @@
+{% load i18n %}
+
+<div id="components" class="row">
+  <div class="col-md-4">
+    <h3>
+      <nobr><i class="fa fa-cubes"></i>&nbsp;<em>Dataset</em></nobr>
+      and
+      <nobr><i class="fa fa-cube"></i>&nbsp;<em>Datafile</em></nobr>
+    </h3>
+
+    <p><span class="label label-info">What are these?</span>
+      A <em>dataset</em> consists of one or more <em>datafiles</em>, each a self-contained piece of extracellular data.
+      Users can download and contribute <em>datasets</em>.</p>
+
+    <p><span class="label label-info">What is it good for?</span>
+      <em>Datasets</em> provide a way to distribute standard benchmark datasets to interested users. </p>
+
+    <p><span class="label label-info">What to do next?</span>
+      We encourage you to come back and upload your results to contribute to the success of this platform.</p>
+
+    <p><span class="label label-info">I have a benchmark dataset!</span>
+      Very well! We are glad to host your benchmark dataset for public use on this platform. Please learn about
+      the
+      details in the documentation section.</p>
+
+    <p><a class="btn btn-default" href="{% url "dataset:list" %}">dataset overview &raquo;</a></p>
+  </div>
+
+  <div class="col-md-4">
+
+    <h2>Evaluation and Modules</h2>
+
+    <p><span class="label label-success">What is this?</span>
+      When you upload your results, we will store and evaluate them against the groundtruth.</p>
+
+    <p><span class="label label-success">What about modules?</span>
+      The evaluation is a modular process. Each module provides a piece of evaluation and or visualisation of your
+      uploaded results.</p>
+
+    <p><span class="label label-success">Will others see my results?</span>
+      All your evaluations will be private if you do not disclose them. Although, private evaluations do not
+      factor
+      into
+      the public summaries!</p>
+
+    <p><span class="label label-success">I am missing a metric!</span>
+      We like to include every metric possible! You would need to provide a reference to a paper or an
+      implementation
+      of
+      the metric.</p>
+
+    <p><span class="label label-success">I want to propose a module!</span>
+      Perfect! Same as for metrics, a reference or a sketch of plots will be needed.</p>
+
+    <p><a class="btn btn-default" href="{% url "analysis:list" %}">analysis overview &raquo;</a></p>
+  </div>
+  <div class="col-md-4">
+    <h2>Behind the Scenes</h2>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus
+      tincidunt.
+      Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum
+      lectus
+      tincidunt. Cras vel tempus metus.</p>
+
+    <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+
+    <h2>Behind the Scenes</h2>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus
+      tincidunt.
+      Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum
+      lectus
+      tincidunt. Cras vel tempus metus.</p>
+
+    <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+  </div>
+</div>
