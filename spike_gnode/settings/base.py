@@ -5,12 +5,14 @@ import logging
 from django.core.exceptions import ImproperlyConfigured
 
 
-def get_env_setting(setting):
+def get_env_setting(setting, default=None):
     """ Get the environment setting or return exception """
     try:
-        return os.environ[setting]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {} env variable!".format(setting))
+        rval = os.environ.get(setting)
+    finally:
+        if rval is None:
+            print "Set the {} env variable!".format(setting)
+        return rval or default
 
 # Your project root
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__) + "../../../")
@@ -43,9 +45,6 @@ INSTALLED_APPS = (
     "compressor",
     "registration",
     "bootstrap3",
-    # rest framework
-    # "rest_framework",
-    # "rest_framework.authtoken",
     # base and initial data
     "base",
     "initial_data",
@@ -92,9 +91,9 @@ STATIC_URL = "/static/"
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-# Put strings here, like "/home/html/static" or "C:/www/django/static".
-# Always use forward slashes, even on Windows.
-# Don't forget to use absolute paths, not relative paths.
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
 )
 
 # load up internationalization, localization and timezones machinery.
@@ -167,19 +166,16 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # DEBUG_TOOLBAR_PANELS = (
 # #'debug_toolbar_user_panel.panels.UserPanel',
-#     'debug_toolbar.panels.version.VersionDebugPanel',
-#     'debug_toolbar.panels.timer.TimerDebugPanel',
-#     'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-#     'debug_toolbar.panels.headers.HeaderDebugPanel',
+# 'debug_toolbar.panels.version.VersionDebugPanel',
+# 'debug_toolbar.panels.timer.TimerDebugPanel',
+# 'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+# 'debug_toolbar.panels.headers.HeaderDebugPanel',
 #     'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
 #     'debug_toolbar.panels.template.TemplateDebugPanel',
 #     'debug_toolbar.panels.sql.SQLDebugPanel',
 #     'debug_toolbar.panels.signals.SignalDebugPanel',
 #     'debug_toolbar.panels.logger.LoggingPanel',
 # )
-
-# Specify a custom user model to use
-#AUTH_USER_MODEL = 'accounts.MyUser'
 
 FILE_UPLOAD_PERMISSIONS = 0o0664
 
@@ -213,7 +209,7 @@ DATABASES = {
 
 # Recipients of traceback emails and other notifications.
 ADMINS = (
-# ("Your Name", "your_email@domain.com"),
+    # ("Your Name", "your_email@domain.com"),
 )
 MANAGERS = ADMINS
 
@@ -234,7 +230,7 @@ ALLOWED_HOSTS = []
 # This is an example method of getting the value from an environment setting.
 # Uncomment to use, and then make sure you set the SECRET_KEY environment variable.
 # This is good to use in production, and on services that support it such as Heroku.
-SECRET_KEY = get_env_setting("SECRET_KEY")
+SECRET_KEY = get_env_setting("SECRET_KEY") or "1234"
 
 # RECAPTCHA
 RECAPTCHA_PUBLIC_KEY = get_env_setting("RECAPTCHA_PUBLIC_KEY")

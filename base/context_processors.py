@@ -7,7 +7,7 @@ __author__ = "pmeier82"
 
 
 def base(request):
-    Site = apps.get_registered_model("sites", "site")
+    Site = apps.get_model("sites", "site")
     obj = Site.objects.get_current()
     return {
         u"SITE_ID": obj.id,

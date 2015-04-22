@@ -5,6 +5,10 @@
   <h1>{% block title %}{% trans "Logout" %}{% endblock %}</h1>
 {% endblock %}
 
+{% block meta %}
+  <meta http-equiv="refresh" content="3;url={{ request.META.HTTP_REFERER }}"/>
+{% endblock %}
+
 {% block content %}
   <p>{% trans "Successfully logged out" %}.</p>
 {% endblock %}

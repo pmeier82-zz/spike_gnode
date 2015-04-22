@@ -6,7 +6,7 @@ from django.db import models, migrations
 
 
 def create_users(apps, schema_editor):
-    User = apps.get_registered_model(*settings.AUTH_USER_MODEL.split("."))
+    User = apps.get_model(*settings.AUTH_USER_MODEL.split("."))
 
     # ADMIN
     user_admin = User()

@@ -17,7 +17,7 @@ from ..forms import AssetForm
 __all__ = ["AssetBaseView", "AssetCreate", "AssetDelete", "AssetServe"]
 __author__ = "pmeier82"
 
-Asset = apps.get_registered_model("base", "asset")
+Asset = apps.get_model("base", "asset")
 
 
 class AssetBaseView(object):
@@ -71,7 +71,7 @@ class AssetServe(AssetBaseView, View):
                 attachment=True,
                 attachment_filename=asset.data_orig_name)
         except Asset.DoesNotExist:
-            msg = "Error: could not find Datafile with id=`{}`".format(pk)
+            msg = "Error: could not find Datafile with id=`{}`".format(self.kwargs.get("pk"))
             messages.error(request, msg)
             raise
 

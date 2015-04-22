@@ -39,9 +39,7 @@ django-recaptcha
 django-taggit
 -e git+https://github.com/laplacesdemon/django-bootstrap-wysiwyg.git#egg=django-bootstrap-wysiwyg
 
-# restframework
-#djangorestframework
-#markdown
-#django-filter
+# spikeval
+-e git+https://github.com/pmeier82/django-spikeval.git#egg=django-spikeval
 
 ## EOF

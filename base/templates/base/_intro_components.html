@@ -8,56 +8,56 @@
       <nobr><i class="fa fa-cube"></i>&nbsp;<em>Datafile</em></nobr>
     </h3>
 
-    <p><span class="label label-info">What are these?</span>
-      A <em>dataset</em> consists of one or more <em>datafiles</em>, each a self-contained piece of extracellular data.
-      Users can download and contribute <em>datasets</em>.</p>
+    <p class="text-justify"><span class="label label-info">What are these?</span>
+      A <em>dataset</em> consists of one or more <em>datafiles</em>, each a self-contained piece of data from live
+      extracellular recordings or data simulations. Users can download and contribute <em>datasets</em>.</p>
 
-    <p><span class="label label-info">What is it good for?</span>
+    <p class="text-justify"><span class="label label-info">What are they good for?</span>
       <em>Datasets</em> provide a way to distribute standard benchmark datasets to interested users. </p>
 
-    <p><span class="label label-info">What to do next?</span>
-      We encourage you to come back and upload your results to contribute to the success of this platform.</p>
+    <p class="text-justify"><span class="label label-info">What to do with them?</span>
+      After download, users apply spike sorting algorithms to the <em>datasets</em>. Spike sorting results submitted
+      back to the service will result in an <em>analysis</em>.</p>
 
-    <p><span class="label label-info">I have a benchmark dataset!</span>
-      Very well! We are glad to host your benchmark dataset for public use on this platform. Please learn about
-      the
-      details in the documentation section.</p>
+    <p class="text-justify"><span class="label label-info">Can users contribute benchmark datasets?</span> Yes! Although
+      there are initial benchmark datasets provided to jump start the service, we are asking for interested parties to
+      create and upload benchmark datasets. If you have any questions or need help, we are happy to help and guide you
+      through the process.</p>
 
     <p><a class="btn btn-default" href="{% url "dataset:list" %}">dataset overview &raquo;</a></p>
   </div>
 
   <div class="col-md-4">
+    <h3>
+      <nobr><i class="fa fa-bar-chart"></i>&nbsp;<em>Analyses</em></nobr>
+      and
+      <nobr><i class="fa fa-wrench"></i>&nbsp;<em>Modules</em></nobr>
+    </h3>
 
-    <h2>Evaluation and Modules</h2>
+    <p class="text-justify"><span class="label label-success">What are these?</span>
+      An <em>analysis</em> is the report about spike sorting results submitted back to the service. They consist of a
+      set of <em>module</em> outputs that form up a comprehensive performance report of the submission.</p>
 
-    <p><span class="label label-success">What is this?</span>
-      When you upload your results, we will store and evaluate them against the groundtruth.</p>
+    <p class="text-justify"><span class="label label-success">What about modules?</span>
+      The performance evaluation is a modular process. Each <em>module</em> provides a piece of the puzzle forming up a
+      comprehensive performance report. Users do not directly interact with <em>modules</em>.</p>
 
-    <p><span class="label label-success">What about modules?</span>
-      The evaluation is a modular process. Each module provides a piece of evaluation and or visualisation of your
-      uploaded results.</p>
+    <p class="text-justify"><span class="label label-success">Will others see my analyses?</span>
+      Unless specifically disclosed for public inspection, <em>analyses</em> will be only visible to the submitting
+      user. However, we strongly encourage disclosure, in order to build public summary statistics.</p>
 
-    <p><span class="label label-success">Will others see my results?</span>
-      All your evaluations will be private if you do not disclose them. Although, private evaluations do not
-      factor
-      into
-      the public summaries!</p>
-
-    <p><span class="label label-success">I am missing a metric!</span>
-      We like to include every metric possible! You would need to provide a reference to a paper or an
-      implementation
-      of
-      the metric.</p>
-
-    <p><span class="label label-success">I want to propose a module!</span>
-      Perfect! Same as for metrics, a reference or a sketch of plots will be needed.</p>
+    <p class="text-justify"><span class="label label-success">Can users contribute modules?</span>
+      Yes! However, the incorporation of a new analysis components into the service is a delicate step that we cannot
+      automate at this point in time. If you want to motivate new analysis components, please contact us with a paper
+      reference and a sketch of the results presentation you would like to see.</p>
 
     <p><a class="btn btn-default" href="{% url "analysis:list" %}">analysis overview &raquo;</a></p>
   </div>
   <div class="col-md-4">
-    <h2>Behind the Scenes</h2>
+    <h3>Behind the Scenes</h3>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus
+    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit
+      faucibus
       tincidunt.
       Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum
       lectus
@@ -65,9 +65,10 @@
 
     <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
 
-    <h2>Behind the Scenes</h2>
+    <h3>Behind the Scenes</h3>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit faucibus
+    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed viverra dui. Aenean blandit
+      faucibus
       tincidunt.
       Phasellus fermentum elit ut erat varius cursus. Nunc posuere mauris sit amet enim congue quis elementum
       lectus
